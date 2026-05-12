@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Send Off Project Flow & Experience Blueprint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --cream: #F7F4EF;
+            --dark: #1E1E1E;
+            --bronze: #8B7355;
+            --beige: #DCCFC0;
+            --glass: rgba(255, 255, 255, 0.7);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(rgba(30, 30, 30, 0.6), rgba(30, 30, 30, 0.6)), url('https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s forwards 0.2s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards 0.4s;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s infinite;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--bronze);
+        }
+
+        /* Flow Section */
+        .section {
+            padding: 100px 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--bronze);
+            margin: 1rem auto;
+        }
+
+        /* Step Timeline */
+        .flow-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .flow-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--beige);
+            transform: translateX(-50%);
+        }
+
+        .flow-step {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 80px;
+            width: 100%;
+            position: relative;
+        }
+
+        .flow-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .flow-content {
+            width: 45%;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .flow-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--bronze);
+            box-shadow: 0 20px 40px rgba(139, 115, 85, 0.1);
+        }
+
+        .flow-number {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            z-index: 2;
+            border: 4px solid var(--cream);
+        }
+
+        .flow-step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--bronze);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .flow-step p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .flow-meta {
+            display: flex;
+            gap: 20px;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--cream);
+            margin-top: 1rem;
+        }
+
+        .meta-item {
+            flex: 1;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .meta-value {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .flow-icon {
+            font-size: 1.8rem;
+            color: var(--bronze);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--bronze);
+            display: block;
+        }
+
+        /* Technical Specs */
+        .tech-stack {
+            background: var(--dark);
+            color: white;
+            padding: 80px 10%;
+            border-radius: 40px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .tech-items {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            background: var(--bronze);
+            border-color: var(--bronze);
+        }
+
+        /* Approval Footer */
+        .approval-footer {
+            padding: 100px 10%;
+            text-align: center;
+            background: var(--beige);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            margin-top: 2rem;
+        }
+
+        .btn:hover {
+            background: var(--bronze);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .flow-line {
+                left: 20px;
+            }
+
+            .flow-number {
+                left: 20px;
+            }
+
+            .flow-step,
+            .flow-step:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .flow-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+                margin-bottom: 2rem;
+            }
+
+            .flow-line {
+                left: 25px;
+                transform: none;
+            }
+
+            .flow-number {
+                left: 25px;
+                transform: translate(-50%, -40px);
+            }
+
+            .flow-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Comparison Toggle Styles */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .comparison-box {
+            padding: 2rem;
+            border-radius: 16px;
+            background: white;
+            border: 1px solid var(--beige);
+        }
+
+        .comparison-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Roadmap Styles */
+        .roadmap-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 4rem;
+            gap: 2rem;
+        }
+
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--beige);
+            z-index: 1;
+        }
+
+        .roadmap-item {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .roadmap-dot {
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            border: 4px solid var(--cream);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .roadmap-item.active .roadmap-dot {
+            background: var(--bronze);
+            box-shadow: 0 0 20px rgba(139, 115, 85, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            .roadmap-container {
+                flex-direction: column;
+                padding-left: 20px;
+            }
+            .roadmap-container::before {
+                left: 45px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                height: 100%;
+            }
+            .roadmap-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 20px;
+                text-align: left;
+            }
+            .roadmap-dot {
+                margin: 0;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <p
+            style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; font-weight: 700; color: #C5B358; margin-bottom: 1rem; opacity: 0; transform: translateY(20px); animation: fadeIn 1s forwards;">
+            Prepared by Kachaam Design Studio</p>
+        <h1>My Send Off<br>User Workflow 1.0</h1>
+        <p style="opacity: 0.9;">Mapping the end-to-end flow from initial discovery to a tangible archival legacy.</p>
+        <a href="#emotional-roi" class="scroll-indicator" aria-label="Scroll to next section"
+            style="text-decoration: none; color: inherit; opacity: 0.8; transition: var(--transition);"><i
+                class="fa-solid fa-chevron-down"></i></a>
+    </section>
+
+    <section id="emotional-roi" class="section">
+        <div class="features-grid">
+            <div class="feature-card" style="text-align: left;">
+                <h3 style="color: var(--bronze); font-size: 1.8rem; margin-bottom: 1rem;">The Emotional ROI</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.8;">Beyond the code, we are building
+                    <strong>Peace of Mind</strong>. By removing the ambiguity of final wishes, we reduce the secondary
+                    trauma for grieving families, allowing them to focus on celebration rather than logistics.
+                </p>
+            </div>
+            <div class="feature-card" style="text-align: left;">
+                <h3 style="color: var(--bronze); font-size: 1.8rem; margin-bottom: 1rem;">The Future Vision</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.8;">
+                    <li style="display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-circle-check"
+                            style="color: var(--bronze);"></i> AI-Driven Video Messages</li>
+                    <li style="display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-circle-check"
+                            style="color: var(--bronze);"></i> Digital Memorial Page Generation</li>
+                    <li style="display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-circle-check"
+                            style="color: var(--bronze);"></i> Blockchain Legacy Vaults</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: white;">
+        <h2 class="section-title">Designed for Every Story</h2>
+        <p style="text-align: center; max-width: 700px; margin: -2rem auto 4rem; opacity: 0.85;">Legacy planning isn't
+            one-size-fits-all. We've optimized the journey for three primary user mentalities.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-feather"></i>
+                <h3>The Storyteller</h3>
+                <p>Focused on preserving memories, family anecdotes, and personal wisdom for future generations.</p>
+                <span class="meta-label">Primary Goal</span>
+                <p style="font-size: 0.85rem; font-weight: 600;">Emotional Continuity</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <h3>The Pragmatist</h3>
+                <p>Ensuring that funeral wishes, logistical arrangements, and practical data are perfectly organized.</p>
+                <span class="meta-label">Primary Goal</span>
+                <p style="font-size: 0.85rem; font-weight: 600;">Operational Clarity</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-shield-heart"></i>
+                <h3>The Protector</h3>
+                <p>Prioritizing the ease of transition for loved ones, removing the burden of difficult decisions.</p>
+                <span class="meta-label">Primary Goal</span>
+                <p style="font-size: 0.85rem; font-weight: 600;">Family Peace of Mind</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">The Experience Flow</h2>
+        <div class="flow-container">
+            <div class="flow-line"></div>
+
+            <!-- Step 1 -->
+            <div class="flow-step">
+                <div class="flow-number">1</div>
+                <div class="flow-content">
+                    <h3><i class="fa-solid fa-sparkles flow-icon"></i> Discovery & Entry</h3>
+                    <p>The journey begins with a thoughtful introduction to legacy planning. We lower the psychological
+                        barrier by focusing on stories and memories rather than logistics, establishing a
+                        <strong>high-trust environment</strong> from the very first click.
+                    </p>
+                    <div class="flow-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Origin</span>
+                            <span class="meta-value">Landing Page</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Action</span>
+                            <span class="meta-value">"Start My Send Off"</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Goal</span>
+                            <span class="meta-value">Immediate Clarity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flow-step">
+                <div class="flow-number">2</div>
+                <div class="flow-content">
+                    <h3><i class="fa-solid fa-user-shield flow-icon"></i> Secure Registration</h3>
+                    <p>User privacy is paramount. In this step, the user creates their secure account, ensuring that
+                        their sensitive legacy data is encrypted and accessible only to them and their designated
+                        guardians.</p>
+                    <div class="flow-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">System</span>
+                            <span class="meta-value">Auth Engine</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Action</span>
+                            <span class="meta-value">Secure Sign Up</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Outcome</span>
+                            <span class="meta-value">Personal Vault</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flow-step">
+                <div class="flow-number">3</div>
+                <div class="flow-content">
+                    <h3><i class="fa-solid fa-house-chimney-window flow-icon"></i> Legacy Dashboard</h3>
+                    <p>The dashboard acts as a <strong>cognitive anchor</strong>, breaking the project into manageable
+                        milestones. By visualizing progress across categories, we reduce "decision fatigue" and provide
+                        a clear roadmap for the user.</p>
+                    <div class="flow-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Status</span>
+                            <span class="meta-value">Real-time Progress</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Action</span>
+                            <span class="meta-value">Select Category</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Value</span>
+                            <span class="meta-value">Organized Mindset</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flow-step">
+                <div class="flow-number">4</div>
+                <div class="flow-content">
+                    <h3><i class="fa-solid fa-feather-pointed flow-icon"></i> Guided Reflection</h3>
+                    <p>Our conversational interface mimics a gentle interview. We use <strong>psychological
+                            triggers</strong> to help users recall memories and articulate wishes they might otherwise
+                        struggle to express. <a href="#sample-questions"
+                            style="color: var(--bronze); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--bronze); margin-left: 5px;">View
+                            Sample Questions →</a></p>
+                    <div class="flow-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Interface</span>
+                            <span class="meta-value">Questionnaire</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Action</span>
+                            <span class="meta-value">Auto-Save Thoughts</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Effect</span>
+                            <span class="meta-value">Emotional ROI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="flow-step">
+                <div class="flow-number">5</div>
+                <div class="flow-content">
+                    <h3><i class="fa-solid fa-users-gear flow-icon"></i> Guardian Connection</h3>
+                    <p>This step provides <strong>ultimate peace of mind</strong> by designating "Legacy Guardians."
+                        Users can invite trusted contacts who will receive the necessary information when the time is
+                        right, bridging the gap between planning and execution.</p>
+                    <div class="flow-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Network</span>
+                            <span class="meta-value">Contact Manager</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Action</span>
+                            <span class="meta-value">Invite Guardians</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Benefit</span>
+                            <span class="meta-value">Shared Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="flow-step">
+                <div class="flow-number">6</div>
+                <div class="flow-content">
+                    <h3><i class="fa-solid fa-wand-magic-sparkles flow-icon"></i> The Magic Review</h3>
+                    <p>The "Magic Moment." Our system synthesizes raw inputs into a cohesive, beautifully formatted
+                        narrative. This step validates the user's life story, transforming it into an emotionally
+                        resonant statement of intent.</p>
+                    <div class="flow-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Processing</span>
+                            <span class="meta-value">AI-Enhanced Polish</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Action</span>
+                            <span class="meta-value">Final Approval</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Result</span>
+                            <span class="meta-value">Narrative Clarity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="flow-step">
+                <div class="flow-number">7</div>
+                <div class="flow-content">
+                    <h3><i class="fa-solid fa-file-pdf flow-icon"></i> Archival Delivery</h3>
+                    <p>The journey culminates in a <strong>tangible artifact</strong>. We generate a high-fidelity,
+                        archival-quality PDF document that serves as a permanent, shareable record outside the digital
+                        space.</p>
+                    <div class="flow-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Export</span>
+                            <span class="meta-value">Archival PDF</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Resolution</span>
+                            <span class="meta-value">Print-Ready</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Success</span>
+                            <span class="meta-value">Legacy Locked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">The Archival Standard</h2>
+        <p style="text-align: center; max-width: 700px; margin: -2rem auto 4rem; opacity: 0.85;">Transforming raw
+            conversational data into a high-fidelity artifact. Our synthesis engine bridges the gap between thought and
+            legacy.</p>
+
+        <div class="comparison-grid">
+            <div class="comparison-box">
+                <span class="comparison-label">Raw User Input</span>
+                <p style="font-style: italic; opacity: 0.7; font-size: 0.95rem;">"I want a small funeral, maybe at the
+                    beach? I love jazz music. Make sure the kids know I'm proud of them. No black clothes, please. Keep it
+                    light."</p>
+            </div>
+            <div class="comparison-box" style="border-color: var(--bronze); background: #fffcf9;">
+                <span class="comparison-label">AI-Polished Output</span>
+                <h4 style="margin-bottom: 0.5rem; color: var(--bronze);">Atmosphere & Tone</h4>
+                <p style="font-size: 0.95rem;">"The transition is to be celebrated with lightness. A coastal gathering
+                    is requested, set against the rhythm of live jazz. In lieu of traditional mourning attire, guests
+                    are encouraged to wear colors that reflect life and vitality."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: white;">
+        <h2 class="section-title">Core Intelligence</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <h3>Instant Auto-Save</h3>
+                <p>Ensuring no profound thought is lost. We prioritize system resilience so users can step away and
+                    return whenever they are emotionally ready.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>AI-Enhanced Polishing</h3>
+                <p>Moving beyond basic text. We refine raw thoughts into elegant prose, elevating the "Send Off"
+                    experience to a premium, curated level.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Secure Encryption</h3>
+                <p>Legacy data is the most personal data. We implement bank-grade security to ensure these wishes remain
+                    private until the moment of transition.</p>
+            </div>
+        </div>
+
+        <div class="tech-stack" style="margin-top: 4rem;">
+            <h3 style="color: var(--beige); margin-bottom: 1rem;">The Engine Room</h3>
+            <p style="opacity: 0.8; max-width: 600px; margin: 0 auto 2rem;">A robust, modern architecture designed for
+                performance, empathy, and absolute privacy.</p>
+            <div class="tech-items">
+                <div class="tech-item"><i class="fa-brands fa-php" style="margin-right: 10px;"></i> PHP 8.2 & MySQL</div>
+                <div class="tech-item"><i class="fa-solid fa-brain" style="margin-right: 10px;"></i> OpenAI Synthesis</div>
+                <div class="tech-item"><i class="fa-solid fa-file-invoice" style="margin-right: 10px;"></i> Dompdf Generation</div>
+                <div class="tech-item"><i class="fa-solid fa-shield-halved" style="margin-right: 10px;"></i> AES-256 Encryption</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+            <div style="text-align: left;">
+                <h4 style="color: var(--bronze); margin-bottom: 1rem;"><i class="fa-solid fa-vault" style="margin-right: 10px;"></i> Data Sovereignty</h4>
+                <p style="font-size: 0.9rem; opacity: 0.8;">You own your data. We provide the tools to export, delete, or transfer your legacy at any time. No lock-in, just pure stewardship.</p>
+            </div>
+            <div style="text-align: left;">
+                <h4 style="color: var(--bronze); margin-bottom: 1rem;"><i class="fa-solid fa-key" style="margin-right: 10px;"></i> Privacy First</h4>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Zero-knowledge principles. Your narrative is decrypted only for you and your designated guardians during the 'Magic Moment'.</p>
+            </div>
+            <div style="text-align: left;">
+                <h4 style="color: var(--bronze); margin-bottom: 1rem;"><i class="fa-solid fa-hourglass-end" style="margin-right: 10px;"></i> The Safe-Release</h4>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Our 'Dead Man's Switch' logic ensures that your final wishes are only released when your verified guardians confirm the transition.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sample-questions" class="section">
+        <h2 class="section-title">The Questionnaire Blueprint</h2>
+        <p style="text-align: center; max-width: 700px; margin: -2rem auto 4rem; opacity: 0.85;">A comprehensive look at
+            the conversational journey. We use these prompts to bridge the gap between memory and legacy.</p>
+
+        <div class="features-grid">
+            <!-- About Me -->
+            <div class="feature-card" style="text-align: left; background: var(--cream);">
+                <span class="meta-label">Category 01</span>
+                <h3 style="margin: 0.5rem 0 1.5rem; color: var(--dark);">About Me</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">How would
+                        people describe you?</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Choose
+                        words that represent you (Adventurous, Creative, etc.)</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">What
+                        mattered most in your life?</li>
+                </ul>
+            </div>
+
+            <!-- The Experience -->
+            <div class="feature-card" style="text-align: left; background: var(--cream);">
+                <span class="meta-label">Category 02</span>
+                <h3 style="margin: 0.5rem 0 1.5rem; color: var(--dark);">The Experience</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">
+                        Atmosphere: Peaceful, Joyful, or Celebratory?</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Location
+                        Preference: Indoor or Outdoor?</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Tone:
+                        Formal or Relaxed?</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Preferred
+                        color palettes and flowers.</li>
+                </ul>
+            </div>
+
+            <!-- Music & Memories -->
+            <div class="feature-card" style="text-align: left; background: var(--cream);">
+                <span class="meta-label">Category 03</span>
+                <h3 style="margin: 0.5rem 0 1.5rem; color: var(--dark);">Music & Memories</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Favorite
+                        songs that defined your journey.</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Quotes or
+                        phrases you lived by.</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Movies,
+                        books, and artists that shaped you.</li>
+                </ul>
+            </div>
+
+            <!-- Personal Messages -->
+            <div class="feature-card" style="text-align: left; background: var(--cream);">
+                <span class="meta-label">Category 04</span>
+                <h3 style="margin: 0.5rem 0 1.5rem; color: var(--dark);">Personal Messages</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Private
+                        final message to family.</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Advice and
+                        love for future generations.</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">The one
+                        thing you want loved ones to remember most.</li>
+                </ul>
+            </div>
+
+            <!-- Legacy -->
+            <div class="feature-card" style="text-align: left; background: var(--cream);">
+                <span class="meta-label">Category 05</span>
+                <h3 style="margin: 0.5rem 0 1.5rem; color: var(--dark);">Legacy</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">What are
+                        you most proud of?</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Biggest
+                        life lessons you wish to pass on.</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Traditions
+                        you hope will continue.</li>
+                </ul>
+            </div>
+
+            <!-- Practical Guidance -->
+            <div class="feature-card" style="text-align: left; background: var(--cream);">
+                <span class="meta-label">Category 06</span>
+                <h3 style="margin: 0.5rem 0 1.5rem; color: var(--dark);">Practical Guidance</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Final
+                        wishes: Burial or Cremation?</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">
+                        Spirituality: Religious, Spiritual, or Secular?</li>
+                    <li style="font-size: 0.95rem; border-left: 2px solid var(--bronze); padding-left: 1rem;">Speakers
+                        and special requests for the service.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--dark); color: white; border-radius: 0px; margin-top: 50px;">
+        <h2 class="section-title" style="color: var(--beige);">Why This Project Will Succeed</h2>
+        <p style="text-align: center; max-width: 700px; margin: -2rem auto 4rem; opacity: 0.85;">Positioning 'My Send
+            Off' as a global leader in the legacy planning space.</p>
+
+        <div class="features-grid">
+            <div class="feature-card"
+                style="background: rgba(255,255,255,0.05); color: white; text-align: left; border: 1px solid rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-heart-pulse" style="color: var(--bronze);"></i>
+                <h3 style="color: var(--beige); margin-bottom: 1rem;">The Human Necessity</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8;">End-of-life planning is no longer a taboo; it's a movement
+                    toward mindfulness. By solving for 'Legacy Anxiety,' we tap into a universal emotional need that has
+                    been underserved by traditional, clinical solutions.</p>
+            </div>
+
+            <div class="feature-card"
+                style="background: rgba(255,255,255,0.05); color: white; text-align: left; border: 1px solid rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-chart-line" style="color: var(--bronze);"></i>
+                <h3 style="color: var(--beige); margin-bottom: 1rem;">The Untapped Market</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8;">While the industry is crowded with legal checklists, there
+                    is a vacuum for <strong>Empathy-First Design</strong>. Our high-fidelity approach positions us as
+                    the 'Apple' of legacy planning premium, intuitive, and deeply personal.</p>
+            </div>
+
+            <div class="feature-card"
+                style="background: rgba(255,255,255,0.05); color: white; text-align: left; border: 1px solid rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-bridge" style="color: var(--bronze);"></i>
+                <h3 style="color: var(--beige); margin-bottom: 1rem;">The Generational Gift</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8;">This isn't a one-time product; it's an heirloom. By
+                    creating a bridge between generations, we ensure high user retention and word-of-mouth growth as
+                    families share their stories through our platform.</p>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Next Steps Section Removed -->
+
+    <footer style="padding: 100px 10%; text-align: center; background: var(--dark); color: white;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <a href="https://kachaam.com" target="_blank"
+                style="color: var(--bronze); font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 1rem; text-decoration: none; display: block;">
+                KACHAAM.COM</a>
+            <h2 style="font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 2rem;">DESIGNING<br>THE
+                SYSTEMS<br>OF IMPACT.</h2>
+            <div style="width: 40px; height: 2px; background: var(--bronze); margin: 0 auto 2rem;"></div>
+            <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 0.5rem;">Inquiries & Collaboration</p>
+            <a href="mailto:hello@kachaam.com"
+                style="color: white; text-decoration: none; font-size: 1.5rem; font-weight: 600; transition: var(--transition);"
+                onmouseover="this.style.color='var(--bronze)'"
+                onmouseout="this.style.color='white'">hello@kachaam.com</a>
+            <div style="margin-top: 3rem; opacity: 0.6; font-size: 0.8rem; letter-spacing: 1px;">USER WORKFLOW 1.0</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.flow-content, .feature-card, .tech-stack').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
